@@ -45,7 +45,7 @@ Finally the application layer allows all different kinds of applications which t
 A node in the DSSN has to understand (beside HTTP) the mentioned protocols (Semantic Pingback and PuSH).
 It can provide data (resources and/or feeds) about persons or artifacts in the data layer and/or provide services and applications on the service and application layers either only to the users of this node or also to other users of the DSSN.
 
-\section{The Xodx Node}
+\section{Xodx -- a prove of concept and usability/practicability for the Distributed Semantic Social Network}
 Because the DSSN should be optimally, from a privacy, data security and data ownership point of view, completely distributed across multiple nodes on the Internet the best would be to have one node per user where the user can control which data and services she wants to provide to others and which services he wants to use on other nodes.
 The acceptance to run a personal node can be increased by minimizing the hardware requirements for the software and thus minimizing the costs for the users.
 
@@ -53,7 +53,9 @@ To get closer to this goal the aim of this practical is to examine the basics of
 
 The practical is structured in two groups, one is implementing a DSSN node using Node.js and the other group extended the Xodx project\footnote{Xodx: \url{http://xodx.dssn.org}}, which is based on PHP.
 
-\subsection{Architecture of Xodx}
+\subsection{Requirements}
+
+\subsection{Architecture}
 Xodx is an implementation of the basic functionality of a DSSN node.
 On the data layer it can be used for publishing resources and Activity-Feeds.
 On the protocol and service layers it can receive Semantic Pingback-Pings and publish and subscribe with PubSubHubbub (PuSH) to Atom-Feeds.
@@ -73,7 +75,17 @@ A class diagram of Xodx together with Saft can be seen in the appendix.
 \end{figure}
 
 
-\section{Evaluation}
+\subsection{Results}
+
+\todo{funktionsumfang und vergleich mit Requirements section}
+
+\section{Evaluation of Simulation of semantic driven distributed social networks}
+
+- zweiter Hauptteil hauptteil des papers
+- aufbau von test copora (generierung und gathering)
+- vokabular für simulation
+- simulation (xodx)
+- results
 
 \subsection{Test Hardware and Software Environment}
 The test hardware which was used for this practical is a Olimex A13-OLinuXino-WIFI board with an ARMv7 Cortex A8 processor at 1GHz (Allwinner A13 System on a chip), 512 MB RAM and 2–8 GB SD-Card-Storage.
