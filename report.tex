@@ -1,6 +1,7 @@
 \documentclass{llncs}
 
 \usepackage{polyglossia}
+\usepackage{todo}
 \setmainlanguage{english}
 
 % \usepackage{natbib}
@@ -24,16 +25,29 @@ The aim of this article is to examine if and how it is possible to setup a node 
 This report especially concentrates on the DSSN node implementation Xodx, its architecture and development.
 \end{abstract}
 
+
 \section{Introduction}
-Einführung und Motivation aus meiner Masterarbeit
+The World Wide Web (W3) is for long time not only a system for retrieving knowledge (Berners-Lee, 1992), but a interactive communication tool.
+Online social networks have gained importance during the last years.
+Currently the most used online social networks are facebook (1.1 bn), google plus (359 mio) and twitter (297 mio).
+Compared to the absolute number of 2.7 billion W3 users approximately 40 \% of the W3 users are active on facebook.
+This concentration on some services stays in contrast to the originally distributed nature of the W3 and the whole Internet as a network of decentralized organized computer nodes.
+
+% Motivation
+The current situation bears some risks regarding the privacy, data security, data ownership and reliability.
+By building up a distributed online social network with multiple interlinked services those risks can be decreased.
+The chose of the service a participant uses is completely up to her preferences.
+On the one hand she can create an account at a big provider's service and doesn't has to care about the installation and maintenance of, on the other hand she can also go as far as setting up a personal service e.g. on a FreedomBox\footnote{see later, a freedom box is …} at home and keep the full control.
+This topology is comparable to the distribution of e-mail-servers and has advantages regarding privacy, data security, data ownership, extensibility, reliability and freedom of communication (compare Tramp et al., 2012).
+Every user is in the situation to control the availability and distribution of his own data without the need of being bound to the terms of service of a provider.
 
 The aim of this paper is to prove that the concept of a DSSN as described in \cite{tramp-s-2012--a} is practically usable to run a social network.
-For this purpose this paper introduces Xodx the implementation of a node for the DSSN, which provides the functionality needed for social communication in the Semantic Web.
+For this purpose Xodx the implementation of a node for the DSSN, which provides the functionality needed for social communication in the Semantic Web is introduced in this paper.
 - Setup testbed of multiple nodes to prove the interoperability
 
 
 \section{The DSSN}
-The Distributed Semantic Social Network (DSSN) is the idea of an architecture of an online social network, which consists of Linked Data RDF-Resources\footnote{See also Resource Description Framework (RDF) \cite{lassila-o-1999--a} and Linked Data \cite{bernerslee-t-2009--}} (from now on just called \emph{resources}), representing persons, which are placed on different nodes distributed across the internet.
+The Distributed Semantic Social Network (DSSN) is the idea of an architecture of an online social network, which consists of Linked Data RDF-Resources\footnote{See also Resource Description Framework (RDF) \cite{lassila-o-1999--a} and Linked Data \cite{bernerslee-t-2009--}} (from now on just called \emph{resources}), representing persons, which are placed on different nodes distributed across the Internet.
 Thus each node holds a part of the network information and refers to other nodes.
 
 As proposed in “An Architecture of a Distributed Semantic Social Network” \cite{tramp-s-2012--a} the DSSN is structured into four layers, the data, protocol, service and application layers.
@@ -45,15 +59,13 @@ Finally the application layer allows all different kinds of applications which t
 A node in the DSSN has to understand (beside HTTP) the mentioned protocols (Semantic Pingback and PuSH).
 It can provide data (resources and/or feeds) about persons or artifacts in the data layer and/or provide services and applications on the service and application layers either only to the users of this node or also to other users of the DSSN.
 
-\section{Xodx -- a prove of concept and usability/practicability for the Distributed Semantic Social Network}
+\section{Xodx – a prove of concept and usability/practicability for the Distributed Semantic Social Network}
 Because the DSSN should be optimally, from a privacy, data security and data ownership point of view, completely distributed across multiple nodes on the Internet the best would be to have one node per user where the user can control which data and services she wants to provide to others and which services he wants to use on other nodes.
 The acceptance to run a personal node can be increased by minimizing the hardware requirements for the software and thus minimizing the costs for the users.
-
-To get closer to this goal the aim of this practical is to examine the basics of a DSSN setup on cheep and low powered hardware and to develop open source software which other users can take to setup there own nodes.
-
-The practical is structured in two groups, one is implementing a DSSN node using Node.js and the other group extended the Xodx project\footnote{Xodx: \url{http://xodx.dssn.org}}, which is based on PHP.
+Xodx project\footnote{Xodx: \url{http://xodx.dssn.org}}, which is based on PHP.
 
 \subsection{Requirements}
+
 
 \subsection{Architecture}
 Xodx is an implementation of the basic functionality of a DSSN node.
@@ -64,7 +76,7 @@ The architecture and intercommunication with other DSSN nodes and services is de
 
 Xodx is constructed as a web application according to the Model-View-Controller (MVC) software design pattern which is supported by the Semantic Application Framework Saft\footnote{Semantic Application Framework Saft: \url{https://github.com/white-gecko/Saft}}.
 PHP is used as programming language because Xodx makes highly use of the Erfurt Framework\footnote{Erfurt Framework: \url{http://erfurt-framework.org/}} and lib-dssn-php\footnote{lib-dssn-php: \url{https://github.com/AKSW/lib-dssn-php/}}.
-A class diagram of Xodx together with Saft can be seen in the appendix.
+% A class diagram of Xodx together with Saft can be seen in the appendix.
 
 \begin{figure}
     \begin{center}
@@ -79,13 +91,19 @@ A class diagram of Xodx together with Saft can be seen in the appendix.
 
 \todo{funktionsumfang und vergleich mit Requirements section}
 
-\section{Evaluation of Simulation of semantic driven distributed social networks}
+\section{Evaluation and Simulation of semantic driven distributed social networks}
 
-- zweiter Hauptteil hauptteil des papers
+- zweiter Hauptteil des papers
+
+\subsection{Evaluation Framework}
 - aufbau von test copora (generierung und gathering)
 - vokabular für simulation
+
+\subsection{Testbed}
 - simulation (xodx)
-- results
+
+\subsection{Results}
+
 
 \subsection{Test Hardware and Software Environment}
 The test hardware which was used for this practical is a Olimex A13-OLinuXino-WIFI board with an ARMv7 Cortex A8 processor at 1GHz (Allwinner A13 System on a chip), 512 MB RAM and 2–8 GB SD-Card-Storage.
@@ -96,6 +114,8 @@ The kernel is a Linux 3.0.42 compiled from the sources provided by the Linux-Sun
 To get a web server environment the very light and resource efficient nginx was used to run PHP applications with the fast-cgi extension.
 As database the Open\-Link Vir\-tu\-oso Open-Source Edition\footnote{Open\-Link Vir\-tu\-oso Open-Source: \url{http://ods.openlinksw.com/dataspace/doc/dav/wiki/Main/Main.VOSIndex}} was chosen because it is the best supported back-end for the Erfurt Framework.
 
+
+\todos
 
 \bibliographystyle{splncs03}
 \bibliography{library}
