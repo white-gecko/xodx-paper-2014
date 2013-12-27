@@ -1,0 +1,39 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sim: <http://ns.dssn.org/sim/> .
+@prefix ex: <http://example.org/> .
+
+ex:Testbed a sim:Testbed ;
+           sim:nodes (
+                <http://xodx.node0.local/>
+                <http://xodx.node1.local/>
+                <http://xodx.node2.local/>
+                <http://xodx.node3.local/>
+                <http://xodx.node4.local/>
+                <http://xodx.node5.local/>
+                <http://xodx.node6.local/>
+                <http://xodx.node7.local/>
+                <http://xodx.node8.local/>
+                <http://xodx.node9.local/>
+                <http://xodx.node10.local/>
+           ) ;
+           sim:sampleNodes (
+                <http://xodx.node0.local/>
+                <http://xodx.node5.local/>
+                <http://xodx.node10.local/>
+           ) .
+
+<http://xodx.node1.local/> a sim:Node ;
+         sim:accounts (
+                ex:acc0
+         ) ;
+
+<http://xodx.node1.local/?c=person&id=acc0> a sim:Account ;
+        sim:node <http://xodx.node1.local/> ;
+        sim:username "test" ;
+        sim:password "test" ;
+        sim:friendshipsOut "20"^^xsd:int ;
+        sim:friendshipsIn ""^^xsd:int ;
+        sim:updateprobability ".8"^^xsd:float ;
+        sim:narativity ".6"^^xsd:float ;
+        sim:responsivity ".2"^^xsd:float ;
