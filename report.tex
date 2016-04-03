@@ -4,8 +4,6 @@
 \usepackage{todo}
 \setmainlanguage{english}
 
-% \usepackage{natbib}
-
 %\usepackage{fontspec}
 %\setmainfont{TeXGyreTermes}
 
@@ -57,7 +55,7 @@ The service layer combines applications which have access for manipulation to th
 Finally the application layer allows all different kinds of applications which the user gives access to, to access his data and act in his name.
 
 A node in the DSSN has to understand (beside HTTP) the mentioned protocols (Semantic Pingback and PuSH).
-It can provide data (resources and/or feeds) about persons or artifacts in the data layer and/or provide services and applications on the service and application layers either only to the users of this node or also to other users of the DSSN.
+It can provide data (resources and/or feeds and use-cases) about persons or artifacts in the data layer and/or provide services and applications on the service and application layers either only to the users of this node or also to other users of the DSSN.
 
 \section{Xodx – a prove of concept and usability/practicability for the Distributed Semantic Social Network}
 Because the DSSN should be optimally, from a privacy, data security and data ownership point of view, completely distributed across multiple nodes on the Internet the best would be to have one node per user where the user can control which data and services she wants to provide to others and which services he wants to use on other nodes.
@@ -65,18 +63,19 @@ The acceptance to run a personal node can be increased by minimizing the hardwar
 Xodx project\footnote{Xodx: \url{http://xodx.dssn.org}}, which is based on PHP.
 
 \subsection{Requirements}
-
+As argued in section (privacy, data security, data ownership, …) and in \cite{tramp-s-2012--a} for an online social network it is important to provide and support privacy, data security, data ownership and freedom of speech, which also presumes the reliability of the services.
+An implementation of a node for the DSSN needs to provide to the user basic functionality for social communication. 
+These basic functionalities are creating and editing a personal description, retrieve the personal descriptions of other persons, adding friendship relations, publishing status-messages, media-artifacts or arbitrary web-resources, subscribing to any web-resource's activity-feed (especially persons) and publish comments to those web-resources.
 
 \subsection{Architecture}
 Xodx is an implementation of the basic functionality of a DSSN node.
 On the data layer it can be used for publishing resources and Activity-Feeds.
-On the protocol and service layers it can receive Semantic Pingback-Pings and publish and subscribe with PubSubHubbub (PuSH) to Atom-Feeds.
-Furthermore on the application layer it has a simple profile manager which can be used to create new person resources and add new friendships to it.
+On the protocol and service layers it can receive Semantic Pingback-Pings and publish and subscribe to Atom-Feeds using PubSubHubbub (PuSH) .
+Furthermore on the application layer it has a simple profile manager which can be used to create new person-resources and add new friendship-relations to it.
 The architecture and intercommunication with other DSSN nodes and services is depicted in Fig. \ref{Xodx_arch}.
 
-Xodx is constructed as a web application according to the Model-View-Controller (MVC) software design pattern which is supported by the Semantic Application Framework Saft\footnote{Semantic Application Framework Saft: \url{https://github.com/white-gecko/Saft}}.
+Xodx is constructed as a web application according to the model-view-controller (MVC) software design pattern which is supported by the Semantic Application Framework Saft\footnote{Semantic Application Framework Saft: \url{https://github.com/white-gecko/Saft}}.
 PHP is used as programming language because Xodx makes highly use of the Erfurt Framework\footnote{Erfurt Framework: \url{http://erfurt-framework.org/}} and lib-dssn-php\footnote{lib-dssn-php: \url{https://github.com/AKSW/lib-dssn-php/}}.
-% A class diagram of Xodx together with Saft can be seen in the appendix.
 
 \begin{figure}
     \begin{center}
@@ -91,7 +90,8 @@ PHP is used as programming language because Xodx makes highly use of the Erfurt 
 
 \todo{funktionsumfang und vergleich mit Requirements section}
 
-\section{Evaluation and Simulation of semantic driven distributed social networks}
+\section{Evaluation and simulation of semantic driven distributed social networks}
+Because it is complicated to test the setup with real data retrieved from twitter due to copyright restrictions, we decided to create a framework which creates dummy samples.
 
 - zweiter Hauptteil des papers
 To evaluate the implementation we have designed an evaluation framework which simulates actions on the social network based on characteristics found on real social networks.
@@ -109,8 +109,10 @@ Based on the account characteristics a corpus generator creates a file containin
 
 
 We have found following characteristics necessary for our simulation:
-the probability of creating original posts (narativity), the probability of responding to a received post or forwarding it (aka. retweet) (responsivity), the frequency of checking for incoming posts (updateprobability).
+the probability of creating original posts (narativity, in ppw – posts per week), the probability of responding to a received post or forwarding it (aka. retweet) (responsivity), the frequency of checking for incoming posts (updateprobability).
 The amount of friendships (incoming/outgoing).
+
+Based on \cite{zhao-d-2009--} we want to emulate heavy users with 626 to 1552 posts per 6 to 12 month (5 to 30 posts per week) and casual users with 48 to 167 tweets. They have 67 to 193 subscribers and 1 of 11 has 665 followers.
 
 \subsection{Testbed}
 - simulation (xodx)
